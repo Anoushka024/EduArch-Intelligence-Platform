@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>EduArch | College Search Results</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-tint": "#0053db",
+            "on-background": "#131b2e",
+            "surface": "#faf8ff",
+            "inverse-surface": "#283044",
+            "on-error-container": "#93000a",
+            "error-container": "#ffdad6",
+            "on-primary-fixed": "#00174b",
+            "tertiary": "#006242",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed": "#002113",
+            "on-surface-variant": "#434655",
+            "on-primary-fixed-variant": "#003ea8",
+            "inverse-on-surface": "#eef0ff",
+            "surface-bright": "#faf8ff",
+            "on-secondary-fixed": "#0b1c30",
+            "on-secondary": "#ffffff",
+            "surface-container-highest": "#dae2fd",
+            "inverse-primary": "#b4c5ff",
+            "on-secondary-container": "#54647a",
+            "on-error": "#ffffff",
+            "primary": "#004ac6",
+            "tertiary-container": "#007d55",
+            "on-tertiary-container": "#bdffdb",
+            "outline": "#737686",
+            "on-primary-container": "#eeefff",
+            "surface-dim": "#d2d9f4",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-tertiary-fixed-variant": "#005236",
+            "secondary-container": "#d0e1fb",
+            "background": "#faf8ff",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed-dim": "#b7c8e1",
+            "primary-container": "#2563eb",
+            "tertiary-fixed": "#6ffbbe",
+            "on-secondary-fixed-variant": "#38485d",
+            "secondary": "#505f76",
+            "surface-container-low": "#f2f3ff",
+            "surface-container-high": "#e2e7ff",
+            "outline-variant": "#c3c6d7",
+            "on-surface": "#131b2e",
+            "surface-container": "#eaedff",
+            "primary-fixed-dim": "#b4c5ff",
+            "surface-variant": "#dae2fd",
+            "secondary-fixed": "#d3e4fe",
+            "primary-fixed": "#dbe1ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "16px",
+            "base": "8px",
+            "gutter": "24px",
+            "stack-sm": "12px",
+            "stack-xl": "80px",
+            "container-max": "1280px",
+            "stack-md": "24px",
+            "stack-xs": "4px",
+            "margin-desktop": "40px",
+            "stack-lg": "48px"
+          },
+          "fontFamily": {
+            "label-sm": ["Geist"],
+            "body-lg": ["Inter"],
+            "display-lg": ["Geist"],
+            "headline-md": ["Geist"],
+            "display-lg-mobile": ["Geist"],
+            "body-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-md": ["Geist"],
+            "headline-lg": ["Geist"]
+          },
+          "fontSize": {
+            "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+    }
+    .search-container-shadow {
+      box-shadow: 0px 4px 20px rgba(15, 23, 42, 0.08);
+    }
+    .college-card-hover:hover .college-image {
+      transform: scale(1.05);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #E2E8F0;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col">
+  <!-- TopNavBar -->
+  <header class="bg-surface-container-lowest dark:bg-on-background border-b border-outline-variant dark:border-outline shadow-[0px_4px_20px_rgba(15,23,42,0.05)] sticky top-0 z-50">
+    <div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto h-16">
+      <div class="flex items-center gap-12">
+        <a href="/index.html" class="font-display-lg text-display-lg font-bold text-on-surface dark:text-on-primary-fixed hover:opacity-90 transition-opacity">EduArch</a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a class="text-primary dark:text-primary-fixed border-b-2 border-primary font-bold pb-1 font-label-md text-label-md" href="/explore.html">Explore</a>
+          <a class="text-secondary dark:text-secondary-fixed-dim font-medium hover:text-primary transition-colors font-label-md text-label-md" href="/compare.html">Compare</a>
+          <a class="text-secondary dark:text-secondary-fixed-dim font-medium hover:text-primary transition-colors font-label-md text-label-md" href="/index.html#predict">Predict</a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-4">
+        <button class="px-4 py-2 text-secondary dark:text-secondary-fixed-dim font-medium hover:bg-surface-container-low transition-all font-label-md text-label-md scale-95 active:scale-90">Sign In</button>
+        <button onclick="window.location.href='/explore.html'" class="px-6 py-2 bg-primary-container text-on-primary-container rounded-lg font-bold hover:bg-primary transition-all font-label-md text-label-md scale-95 active:scale-90">Get Started</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow flex w-full max-w-container-max mx-auto">
+    <!-- SideNavBar (Sticky Filter) -->
+    <aside class="hidden md:flex flex-col w-64 h-[calc(100vh-64px)] sticky top-16 p-6 border-r border-outline-variant bg-surface-container-lowest dark:bg-inverse-surface gap-stack-sm z-40 overflow-y-auto custom-scrollbar">
+      <div class="mb-6">
+        <h2 class="font-headline-md text-headline-md font-bold text-on-surface">Filters</h2>
+        <p class="font-body-sm text-body-sm text-secondary">Refine Results</p>
+      </div>
+      <div class="space-y-6">
+        <div>
+          <div class="flex items-center gap-3 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg px-4 py-2 font-bold translate-x-1 transition-transform">
+            <span class="material-symbols-outlined">payments</span>
+            <span class="font-label-md text-label-md">Fees</span>
+          </div>
+          <div class="mt-4 px-4">
+            <input class="w-full accent-primary" max="100000" min="0" type="range"/>
+            <div class="flex justify-between mt-2 font-label-sm text-label-sm text-outline">
+              <span>$0</span>
+              <span>$100k+</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 text-secondary dark:text-secondary-fixed-dim px-4 py-2 hover:bg-surface-container-high transition-colors rounded-lg cursor-pointer">
+          <span class="material-symbols-outlined">star</span>
+          <span class="font-label-md text-label-md">Rating</span>
+        </div>
+        <div class="flex items-center gap-3 text-secondary dark:text-secondary-fixed-dim px-4 py-2 hover:bg-surface-container-high transition-colors rounded-lg cursor-pointer">
+          <span class="material-symbols-outlined">location_on</span>
+          <span class="font-label-md text-label-md">Location</span>
+        </div>
+        <div class="flex items-center gap-3 text-secondary dark:text-secondary-fixed-dim px-4 py-2 hover:bg-surface-container-high transition-colors rounded-lg cursor-pointer">
+          <span class="material-symbols-outlined">school</span>
+          <span class="font-label-md text-label-md">Course</span>
+        </div>
+      </div>
+
+      <div class="mt-8 border-t border-outline-variant pt-6">
+        <span class="font-label-sm text-label-sm uppercase tracking-wider text-outline mb-4 block">Ownership</span>
+        <div class="space-y-3">
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+            <span class="font-body-sm text-body-sm">Public Research</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+            <span class="font-body-sm text-body-sm">Private Ivy</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer">
+            <input checked="" class="rounded border-outline-variant text-primary focus:ring-primary h-4 w-4" type="checkbox"/>
+            <span class="font-body-sm text-body-sm">Liberal Arts</span>
+          </label>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <section class="flex-grow p-margin-desktop overflow-hidden">
+      <!-- Airbnb Style Search -->
+      <form action="/explore.html" method="GET" class="max-w-4xl mx-auto mb-stack-lg">
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-full flex flex-col md:flex-row items-center p-2 search-container-shadow hover:shadow-lg transition-shadow duration-300">
+          <div class="flex-1 px-8 py-2 border-b md:border-b-0 md:border-r border-outline-variant w-full">
+            <label class="block font-label-sm text-label-sm text-outline uppercase tracking-tight">College Name</label>
+            <input name="college" id="explore-college-input" class="w-full bg-transparent border-none focus:ring-0 p-0 font-body-md text-on-surface placeholder:text-outline-variant" placeholder="Search institution..." type="text"/>
+          </div>
+          <div class="flex-1 px-8 py-2 border-b md:border-b-0 md:border-r border-outline-variant w-full">
+            <label class="block font-label-sm text-label-sm text-outline uppercase tracking-tight">Location</label>
+            <input name="location" id="explore-location-input" class="w-full bg-transparent border-none focus:ring-0 p-0 font-body-md text-on-surface placeholder:text-outline-variant" placeholder="Add location" type="text"/>
+          </div>
+          <div class="flex-1 px-8 py-2 w-full">
+            <label class="block font-label-sm text-label-sm text-outline uppercase tracking-tight">Major</label>
+            <input name="major" id="explore-major-input" class="w-full bg-transparent border-none focus:ring-0 p-0 font-body-md text-on-surface placeholder:text-outline-variant" placeholder="Computer Science" type="text"/>
+          </div>
+          <button type="submit" class="bg-primary-container text-on-primary-container p-4 rounded-full flex items-center justify-center scale-95 hover:scale-100 active:scale-90 transition-transform">
+            <span class="material-symbols-outlined">search</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Active Filter Chips -->
+      <div class="flex flex-wrap gap-3 mb-10 items-center">
+        <span class="font-label-md text-label-md text-secondary">Active filters:</span>
+        <div class="flex items-center gap-2 bg-surface-container-high px-4 py-1.5 rounded-full border border-outline-variant group hover:bg-surface-container transition-colors">
+          <span class="font-body-sm text-body-sm">Liberal Arts</span>
+          <span class="material-symbols-outlined text-[18px] cursor-pointer text-outline group-hover:text-primary close-chip-btn">close</span>
+        </div>
+        <div class="flex items-center gap-2 bg-surface-container-high px-4 py-1.5 rounded-full border border-outline-variant group hover:bg-surface-container transition-colors">
+          <span class="font-body-sm text-body-sm">Rating: 4.5+</span>
+          <span class="material-symbols-outlined text-[18px] cursor-pointer text-outline group-hover:text-primary close-chip-btn">close</span>
+        </div>
+        <button onclick="window.location.href='/explore.html'" class="text-primary font-label-md text-label-md underline hover:text-primary-container">Clear all</button>
+      </div>
+
+      <!-- Results Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- College Card 1 (Northwood) -->
+        <div onclick="window.location.href='/details.html'" class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(15,23,42,0.05)] college-card-hover transition-all duration-300 hover:shadow-[0px_10px_30px_rgba(15,23,42,0.08)] hover:-translate-y-0.5 cursor-pointer">
+          <div class="aspect-video overflow-hidden relative">
+            <img alt="Northwood University Campus" class="college-image w-full h-full object-cover transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_Ajf6kenAXf24Hz8TNNWeZv6gS6ORGrPyrRdpgOGWh07ffpHAqrNsB9XhFs8aZh5fu06hgGY2WUs2nAWYtVFkfnEjcOUjS9Kr1lWxXfyhQUXPquE3fyFM90ukzC-dCRIqlSxxHVnWtYutBkdMZyMdtTWNm4-_YMycd37gqLQb4YlqH8dJ6dnpb5NMlcXn4JcMCAclnS34PQNMZOkAuZ4C6fUMTgh_6oPArixcvVKe5ipZhGOtBi8d2czVGLnKkMlsNkarheWINKCF"/>
+            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg flex items-center gap-1.5 shadow-sm border border-outline-variant/30">
+              <span class="material-symbols-outlined text-yellow-500 text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="font-label-md text-label-md font-bold">4.9</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Northwood University</h3>
+                <div class="flex items-center gap-2 text-outline mt-1">
+                  <span class="material-symbols-outlined text-[18px]">location_on</span>
+                  <span class="font-body-sm text-body-sm">Ann Arbor, MI</span>
+                </div>
+              </div>
+              <div class="h-12 w-12 rounded-lg border border-outline-variant bg-surface p-1 flex items-center justify-center">
+                <span class="font-display-lg text-[20px] font-bold text-primary">N</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 py-4 border-y border-outline-variant">
+              <div>
+                <span class="block font-label-sm text-label-sm text-outline uppercase">Annual Tuition</span>
+                <span class="font-headline-md text-headline-md text-primary">$42,500</span>
+              </div>
+              <div>
+                <span class="block font-label-sm text-label-sm text-outline uppercase">Avg. Package</span>
+                <span class="font-headline-md text-headline-md text-on-surface">$88,000</span>
+              </div>
+            </div>
+            <div class="mt-6 flex justify-between items-center">
+              <div class="flex -space-x-2">
+                <div class="h-8 w-8 rounded-full border-2 border-white bg-secondary-fixed flex items-center justify-center text-[10px] font-bold">CS</div>
+                <div class="h-8 w-8 rounded-full border-2 border-white bg-tertiary-fixed flex items-center justify-center text-[10px] font-bold">DS</div>
+                <div class="h-8 w-8 rounded-full border-2 border-white bg-primary-fixed flex items-center justify-center text-[10px] font-bold">ME</div>
+              </div>
+              <button onclick="event.stopPropagation(); window.location.href='/details.html'" class="text-primary font-bold font-label-md text-label-md flex items-center gap-1 group">
+                View Details 
+                <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- College Card 2 (Vanguard) -->
+        <div onclick="window.location.href='/details.html'" class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(15,23,42,0.05)] college-card-hover transition-all duration-300 hover:shadow-[0px_10px_30px_rgba(15,23,42,0.08)] hover:-translate-y-0.5 cursor-pointer">
+          <div class="aspect-video overflow-hidden relative">
+            <img alt="Vanguard Institute Campus" class="college-image w-full h-full object-cover transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_Jc1FoCgiyrYjyOZFCChOQinPyv68D8fcExbVAdkVLomSh_WEVqTyq4QXtOQEE7Dvynaj5xP51PQuiYIhRn7JRoqTNr9iZBpo3FjzSgpTXNT0MHIM98RysgVB6m_qS1hqyAdlWWff2udRQaHfgnlInzemgf7zn9b1bwjTRf-uBBSOHdLsjgMy59bYfP8MRPkbpu0U4iSahs17r6QSQx6VOQnXPIjTBnXIAzp9Y02AIJdkLPmVIH41Bc2ij6vp2FPzDc8MPu2LyXA1"/>
+            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg flex items-center gap-1.5 shadow-sm border border-outline-variant/30">
+              <span class="material-symbols-outlined text-yellow-500 text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="font-label-md text-label-md font-bold">4.7</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Vanguard Institute</h3>
+                <div class="flex items-center gap-2 text-outline mt-1">
+                  <span class="material-symbols-outlined text-[18px]">location_on</span>
+                  <span class="font-body-sm text-body-sm">Palo Alto, CA</span>
+                </div>
+              </div>
+              <div class="h-12 w-12 rounded-lg border border-outline-variant bg-surface p-1 flex items-center justify-center">
+                <span class="font-display-lg text-[20px] font-bold text-primary">V</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 py-4 border-y border-outline-variant">
+              <div>
+                <span class="block font-label-sm text-label-sm text-outline uppercase">Annual Tuition</span>
+                <span class="font-headline-md text-headline-md text-primary">$51,200</span>
+              </div>
+              <div>
+                <span class="block font-label-sm text-label-sm text-outline uppercase">Avg. Package</span>
+                <span class="font-headline-md text-headline-md text-on-surface">$102,500</span>
+              </div>
+            </div>
+            <div class="mt-6 flex justify-between items-center">
+              <div class="flex -space-x-2">
+                <div class="h-8 w-8 rounded-full border-2 border-white bg-primary-container text-white flex items-center justify-center text-[10px] font-bold">AI</div>
+                <div class="h-8 w-8 rounded-full border-2 border-white bg-secondary-fixed flex items-center justify-center text-[10px] font-bold">CS</div>
+              </div>
+              <button onclick="event.stopPropagation(); window.location.href='/details.html'" class="text-primary font-bold font-label-md text-label-md flex items-center gap-1 group">
+                View Details 
+                <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- College Card 3 (Meridian) -->
+        <div onclick="window.location.href='/details.html'" class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(15,23,42,0.05)] college-card-hover transition-all duration-300 hover:shadow-[0px_10px_30px_rgba(15,23,42,0.08)] hover:-translate-y-0.5 cursor-pointer">
+          <div class="aspect-video overflow-hidden relative">
+            <img alt="Meridian College Campus" class="college-image w-full h-full object-cover transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKG5ERupby4yOcFq50HerGEnLwDN1UDTaT1Uchce96H9yrRslu5SMXGPttyVfziWdVrKpzm5TjMQyj9ln9Fz1-c6ZcGAlYUrQGdsu6LOUDe2bP2oTXKjRbCtebdMaT--FSVQTYAbPp34J7xaI_YU6yxlCMhEB3GQIjTLtReSR1CDcMBFNKsXlQg1kcJJW6wxd7O0vkAjhpTFqudWJFbA7U8HorFH_0AZY0WXUe0eD4xmveH4beghzBggn4h3YQ2E3atqwN-M9yfkEq"/>
+            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg flex items-center gap-1.5 shadow-sm border border-outline-variant/30">
+              <span class="material-symbols-outlined text-yellow-500 text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="font-label-md text-label-md font-bold">4.6</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Meridian College</h3>
+                <div class="flex items-center gap-2 text-outline mt-1">
+                  <span class="material-symbols-outlined text-[18px]">location_on</span>
+                  <span class="font-body-sm text-body-sm">Boston, MA</span>
+                </div>
+              </div>
+              <div class="h-12 w-12 rounded-lg border border-outline-variant bg-surface p-1 flex items-center justify-center">
+                <span class="font-display-lg text-[20px] font-bold text-primary">M</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 py-4 border-y border-outline-variant">
+              <div>
+                <span class="block font-label-sm text-label-sm text-outline uppercase">Annual Tuition</span>
+                <span class="font-headline-md text-headline-md text-primary">$38,000</span>
+              </div>
+              <div>
+                <span class="block font-label-sm text-label-sm text-outline uppercase">Avg. Package</span>
+                <span class="font-headline-md text-headline-md text-on-surface">$76,400</span>
+              </div>
+            </div>
+            <div class="mt-6 flex justify-between items-center">
+              <div class="flex -space-x-2">
+                <div class="h-8 w-8 rounded-full border-2 border-white bg-tertiary-container text-white flex items-center justify-center text-[10px] font-bold">BIO</div>
+                <div class="h-8 w-8 rounded-full border-2 border-white bg-secondary-fixed flex items-center justify-center text-[10px] font-bold">PH</div>
+              </div>
+              <button onclick="event.stopPropagation(); window.location.href='/details.html'" class="text-primary font-bold font-label-md text-label-md flex items-center gap-1 group">
+                View Details 
+                <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- College Card 4 (Pacific Bridge) -->
+        <div onclick="window.location.href='/details.html'" class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(15,23,42,0.05)] college-card-hover transition-all duration-300 hover:shadow-[0px_10px_30px_rgba(15,23,42,0.08)] hover:-translate-y-0.5 cursor-pointer">
+          <div class="aspect-video overflow-hidden relative">
+            <img alt="Pacific Bridge Tech Campus" class="college-image w-full h-full object-cover transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV0QulcQITuScCxl6fRICU64u3HxMgmC4vF7wLWp_lHxhiVjjjqQI6Q46R9OfywKDqvrNzyHcoWjqY3h4A9xQpIY_QmgT5UfnkPp8DjGtns0GFmnHgSQwms_DdifPfWPMXlgPpPJzI6Vwheda-hlo_BKhohMSGxM8iUhF2xSL59WTcwOSQpbEF8LEMNvizd5q5dV7KHEGaXtvJ7W522wsYH7WwRLn3Ywi4uE-BQx4uRANJjaZrc_MAjzv1zbRhGzxng_CZ8MViuwK4"/>
+            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg flex items-center gap-1.5 shadow-sm border border-outline-variant/30">
+              <span class="material-symbols-outlined text-yellow-500 text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="font-label-md text-label-md font-bold">4.8</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Pacific Bridge Tech</h3>
+                <div class="flex items-center gap-2 text-outline mt-1">
+                  <span class="material-symbols-outlined text-[18px]">location_on</span>
+                  <span class="font-body-sm text-body-sm">Seattle, WA</span>
+                </div>
+              </div>
+              <div class="h-12 w-12 rounded-lg border border-outline-variant bg-surface p-1 flex items-center justify-center">
+                <span class="font-display-lg text-[20px] font-bold text-primary">P</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 py-4 border-y border-outline-variant">
+              <div>
+                <span class="block font-label-sm text-label-sm text-outline uppercase">Annual Tuition</span>
+                <span class="font-headline-md text-headline-md text-primary">$45,000</span>
+              </div>
+              <div>
+                <span class="block font-label-sm text-label-sm text-outline uppercase">Avg. Package</span>
+                <span class="font-headline-md text-headline-md text-on-surface">$94,000</span>
+              </div>
+            </div>
+            <div class="mt-6 flex justify-between items-center">
+              <div class="flex -space-x-2">
+                <div class="h-8 w-8 rounded-full border-2 border-white bg-secondary-fixed flex items-center justify-center text-[10px] font-bold">SWE</div>
+                <div class="h-8 w-8 rounded-full border-2 border-white bg-primary-fixed flex items-center justify-center text-[10px] font-bold">UX</div>
+              </div>
+              <button onclick="event.stopPropagation(); window.location.href='/details.html'" class="text-primary font-bold font-label-md text-label-md flex items-center gap-1 group">
+                View Details 
+                <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="mt-16 flex justify-center items-center gap-4">
+        <button class="p-2 rounded-full border border-outline-variant text-outline hover:bg-surface-container-high transition-colors">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <div class="flex gap-2">
+          <button class="w-10 h-10 rounded-full bg-primary text-white font-bold">1</button>
+          <button class="w-10 h-10 rounded-full border border-outline-variant text-secondary hover:bg-surface-container-high font-medium">2</button>
+          <button class="w-10 h-10 rounded-full border border-outline-variant text-secondary hover:bg-surface-container-high font-medium">3</button>
+          <span class="px-2 self-end text-outline">...</span>
+          <button class="w-10 h-10 rounded-full border border-outline-variant text-secondary hover:bg-surface-container-high font-medium">12</button>
+        </div>
+        <button class="p-2 rounded-full border border-outline-variant text-outline hover:bg-surface-container-high transition-colors">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-surface-container-lowest dark:bg-on-background border-t border-outline-variant dark:border-outline py-stack-lg px-margin-desktop w-full max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center">
+    <div class="flex flex-col gap-4 text-center md:text-left mb-8 md:mb-0">
+      <a href="/index.html" class="font-headline-lg text-headline-lg font-bold text-on-surface">EduArch</a>
+      <p class="font-body-sm text-body-sm text-secondary max-w-xs">© 2024 EduArch. Precise navigation for academic ambition.</p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-8 md:gap-12">
+      <a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary underline-offset-4 hover:underline font-label-sm text-label-sm transition-colors opacity-80 hover:opacity-100" href="/explore.html">Mission</a>
+      <a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary underline-offset-4 hover:underline font-label-sm text-label-sm transition-colors opacity-80 hover:opacity-100" href="#">Privacy</a>
+      <a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary underline-offset-4 hover:underline font-label-sm text-label-sm transition-colors opacity-80 hover:opacity-100" href="#">Terms</a>
+      <a class="text-secondary dark:text-secondary-fixed-dim hover:text-primary underline-offset-4 hover:underline font-label-sm text-label-sm transition-colors opacity-80 hover:opacity-100" href="#">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // URL Params parsing
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('college')) {
+      document.getElementById('explore-college-input').value = params.get('college');
+    }
+    if (params.get('location')) {
+      document.getElementById('explore-location-input').value = params.get('location');
+    }
+    if (params.get('major')) {
+      document.getElementById('explore-major-input').value = params.get('major');
+    }
+
+    // Simple Micro-interaction for hover states on chips
+    document.querySelectorAll('.close-chip-btn').forEach(closeBtn => {
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.parentElement.style.opacity = '0';
+        setTimeout(() => this.parentElement.remove(), 200);
+      });
+    });
+
+    // Search Bar Focus Effect
+    const searchInput = document.getElementById('explore-college-input');
+    const searchContainer = searchInput?.closest('.search-container-shadow') || searchInput?.parentElement?.parentElement;
+    if (searchInput && searchContainer) {
+      searchInput.addEventListener('focus', () => {
+        searchContainer.style.borderColor = '#004ac6';
+        searchContainer.style.borderWidth = '2px';
+      });
+      searchInput.addEventListener('blur', () => {
+        searchContainer.style.borderColor = '#c3c6d7';
+        searchContainer.style.borderWidth = '1px';
+      });
+    }
+  </script>
+</body>
+</html>

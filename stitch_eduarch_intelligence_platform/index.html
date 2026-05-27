@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>EduArch | Precision Academic Navigation</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-tint": "#0053db",
+            "on-background": "#131b2e",
+            "surface": "#faf8ff",
+            "inverse-surface": "#283044",
+            "on-error-container": "#93000a",
+            "error-container": "#ffdad6",
+            "on-primary-fixed": "#00174b",
+            "tertiary": "#006242",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed": "#002113",
+            "on-surface-variant": "#434655",
+            "on-primary-fixed-variant": "#003ea8",
+            "inverse-on-surface": "#eef0ff",
+            "surface-bright": "#faf8ff",
+            "on-secondary-fixed": "#0b1c30",
+            "on-secondary": "#ffffff",
+            "surface-container-highest": "#dae2fd",
+            "inverse-primary": "#b4c5ff",
+            "on-secondary-container": "#54647a",
+            "on-error": "#ffffff",
+            "primary": "#004ac6",
+            "tertiary-container": "#007d55",
+            "on-tertiary-container": "#bdffdb",
+            "outline": "#737686",
+            "on-primary-container": "#eeefff",
+            "surface-dim": "#d2d9f4",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-tertiary-fixed-variant": "#005236",
+            "secondary-container": "#d0e1fb",
+            "background": "#faf8ff",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed-dim": "#b7c8e1",
+            "primary-container": "#2563eb",
+            "tertiary-fixed": "#6ffbbe",
+            "on-secondary-fixed-variant": "#38485d",
+            "secondary": "#505f76",
+            "surface-container-low": "#f2f3ff",
+            "surface-container-high": "#e2e7ff",
+            "outline-variant": "#c3c6d7",
+            "on-surface": "#131b2e",
+            "surface-container": "#eaedff",
+            "primary-fixed-dim": "#b4c5ff",
+            "surface-variant": "#dae2fd",
+            "secondary-fixed": "#d3e4fe",
+            "primary-fixed": "#dbe1ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "16px",
+            "base": "8px",
+            "gutter": "24px",
+            "stack-sm": "12px",
+            "stack-xl": "80px",
+            "container-max": "1280px",
+            "stack-md": "24px",
+            "stack-xs": "4px",
+            "margin-desktop": "40px",
+            "stack-lg": "48px"
+          },
+          "fontFamily": {
+            "label-sm": ["Geist"],
+            "body-lg": ["Inter"],
+            "display-lg": ["Geist"],
+            "headline-md": ["Geist"],
+            "display-lg-mobile": ["Geist"],
+            "body-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-md": ["Geist"],
+            "headline-lg": ["Geist"]
+          },
+          "fontSize": {
+            "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+    }
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .hero-gradient {
+      background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.05) 0%, rgba(250, 248, 255, 0) 70%);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+  <!-- TopNavBar -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest border-b border-outline-variant shadow-[0px_4px_20px_rgba(15,23,42,0.05)]">
+    <div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+      <div class="flex items-center gap-12">
+        <a href="/index.html" class="font-display-lg text-headline-lg font-bold text-on-surface hover:opacity-90 transition-opacity">EduArch</a>
+        <nav class="hidden md:flex gap-8">
+          <a class="text-secondary font-medium hover:text-primary transition-colors font-label-md text-label-md" href="/explore.html">Explore</a>
+          <a class="text-secondary font-medium hover:text-primary transition-colors font-label-md text-label-md" href="/compare.html">Compare</a>
+          <a class="text-secondary font-medium hover:text-primary transition-colors font-label-md text-label-md" href="/index.html#predict">Predict</a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-4">
+        <button class="px-5 py-2 text-secondary font-medium hover:bg-surface-container-low transition-all duration-200 rounded-lg scale-95 active:scale-90 font-label-md text-label-md">Sign In</button>
+        <button onclick="window.location.href='/explore.html'" class="px-6 py-2 bg-primary-container text-on-primary rounded-lg font-bold hover:shadow-lg transition-all duration-200 scale-95 active:scale-90 font-label-md text-label-md">Get Started</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-24">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden hero-gradient py-stack-xl px-margin-desktop">
+      <div class="max-w-container-max mx-auto text-center flex flex-col items-center">
+        <div class="mb-6 inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full font-label-sm text-label-sm uppercase tracking-wider">
+          <span class="material-symbols-outlined text-[16px]">verified</span> Precision Academic Search
+        </div>
+        <h1 class="font-display-lg text-display-lg max-w-4xl mb-6 text-on-surface">
+          Find the college that shapes your future.
+        </h1>
+        <p class="font-body-lg text-body-lg text-secondary max-w-2xl mb-12">
+          Compare placements, fees, outcomes, rankings, and student experiences across India’s leading institutions.
+        </p>
+
+        <!-- Search Component (Airbnb-style) -->
+        <form action="/explore.html" method="GET" class="w-full max-w-3xl bg-surface-container-lowest rounded-full shadow-[0px_10px_30px_rgba(15,23,42,0.08)] p-2 flex flex-col md:flex-row items-center gap-2 border border-outline-variant hover:border-primary/30 transition-all focus-within:ring-2 focus-within:ring-primary/20">
+          <div class="flex-1 px-6 py-2 text-left w-full">
+            <label class="block font-label-sm text-label-sm text-secondary">College Name</label>
+            <input name="college" class="w-full bg-transparent border-none focus:ring-0 p-0 text-on-surface placeholder:text-outline font-body-md" placeholder="IIT Bombay, BITS..." type="text"/>
+          </div>
+          <div class="w-[1px] h-8 bg-outline-variant hidden md:block"></div>
+          <div class="flex-1 px-6 py-2 text-left w-full">
+            <label class="block font-label-sm text-label-sm text-secondary">Location</label>
+            <input name="location" class="w-full bg-transparent border-none focus:ring-0 p-0 text-on-surface placeholder:text-outline font-body-md" placeholder="Mumbai, Bangalore..." type="text"/>
+          </div>
+          <div class="w-[1px] h-8 bg-outline-variant hidden md:block"></div>
+          <div class="flex-1 px-6 py-2 text-left w-full">
+            <label class="block font-label-sm text-label-sm text-secondary">Major</label>
+            <input name="major" class="w-full bg-transparent border-none focus:ring-0 p-0 text-on-surface placeholder:text-outline font-body-md" placeholder="Computer Science..." type="text"/>
+          </div>
+          <button type="submit" class="bg-primary p-4 rounded-full text-white flex items-center justify-center hover:bg-primary-container transition-colors shadow-md">
+            <span class="material-symbols-outlined">search</span>
+          </button>
+        </form>
+
+        <div class="mt-12 flex flex-wrap justify-center gap-stack-md">
+          <div class="flex flex-col items-center">
+            <span class="font-display-lg text-headline-lg text-primary">500+</span>
+            <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Institutions</span>
+          </div>
+          <div class="w-[1px] h-12 bg-outline-variant mx-8"></div>
+          <div class="flex flex-col items-center">
+            <span class="font-display-lg text-headline-lg text-primary">100k</span>
+            <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Students</span>
+          </div>
+          <div class="w-[1px] h-12 bg-outline-variant mx-8"></div>
+          <div class="flex flex-col items-center">
+            <span class="font-display-lg text-headline-lg text-primary">₹24L</span>
+            <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Avg Placement</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section class="py-stack-xl">
+      <div class="max-w-container-max mx-auto px-margin-desktop">
+        <div class="flex justify-between items-end mb-stack-lg">
+          <div>
+            <h2 class="font-headline-lg text-headline-lg mb-2">Featured Institutions</h2>
+            <p class="font-body-md text-body-md text-secondary">Explore top-tier campuses curated for excellence.</p>
+          </div>
+          <div class="flex gap-4">
+            <button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors" onclick="scrollCarousel(-1)">
+              <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors text-primary border-primary" onclick="scrollCarousel(1)">
+              <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex gap-gutter overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-8" id="college-carousel">
+          <!-- Card 1 (IIT Madras) -->
+          <div onclick="window.location.href='/details.html'" class="min-w-[400px] snap-start group cursor-pointer bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-[0px_4px_20px_rgba(15,23,42,0.05)] hover:shadow-[0px_10px_30px_rgba(15,23,42,0.08)] hover:-translate-y-2 transition-all duration-300">
+            <div class="relative aspect-video overflow-hidden">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0" alt="IIT Madras Campus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsplwlj_74_uYd89Dw7Zp86hjuIiIgZfaTXPj2Mzi9LJK-LrwLQ-kvp-bxwnQtVSgYswzH0LYIvqKfotF5p3WPKTZeKwK9-6pESwYnNrYtOkLUQwMzlr1xR8SC85RGPEduswPNEV82EUZ2as5SICjRhp9XLuqzf_092V3z50_1FDDBJoUcXe_1qH1y4fTMfw6uL4szu7KP8YjrQhOiBdzYKhGQJ5mWQlpyJ79COF3av2J5r15SSxNiVEvk2XHHiiOqw1DhUpUNu3Y5"/>
+              <div class="absolute top-4 right-4 bg-primary/90 text-white px-3 py-1 rounded-full font-label-sm text-label-sm">
+                NIRF #1
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">IIT Madras</h3>
+                <span class="material-symbols-outlined text-outline">bookmark</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-secondary mb-4 flex items-center gap-1">
+                <span class="material-symbols-outlined text-[18px]">location_on</span> Chennai, Tamil Nadu
+              </p>
+              <div class="flex gap-2">
+                <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-sm text-label-sm rounded uppercase tracking-tighter">B.Tech</span>
+                <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-sm text-label-sm rounded uppercase tracking-tighter">Dual Degree</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 (BITS Pilani) -->
+          <div onclick="window.location.href='/details.html'" class="min-w-[400px] snap-start group cursor-pointer bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-[0px_4px_20px_rgba(15,23,42,0.05)] hover:shadow-[0px_10px_30px_rgba(15,23,42,0.08)] hover:-translate-y-2 transition-all duration-300">
+            <div class="relative aspect-video overflow-hidden">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0" alt="BITS Pilani Campus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdqGouVkoHPHlYgRVyFSk7yO_o6gEm1PkqX7Aiie5PX6mIgcXCJOLDrQyogDX945Fh3OodGw7MRMWVduZQutxKQWzFn8UXJQReYlZNgivwFYonRSld71OdwgG4ZG5Vxx3Q0KLYDms0cGxLNqlC3Zbd_R6VcEZmmwdZrnyZr9j0jqbJLYmSzJRvy1aUOtsGElrEH3l9z6oPbl0bB6DEXBi33KsYztuUlux7jgVAtcDY1UlxAklCuc7hmEKD6O9cppsLcn8gEC5W_3qR"/>
+              <div class="absolute top-4 right-4 bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-label-sm text-label-sm">
+                Best Private
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">BITS Pilani</h3>
+                <span class="material-symbols-outlined text-outline">bookmark</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-secondary mb-4 flex items-center gap-1">
+                <span class="material-symbols-outlined text-[18px]">location_on</span> Pilani, Rajasthan
+              </p>
+              <div class="flex gap-2">
+                <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-sm text-label-sm rounded uppercase tracking-tighter">B.E.</span>
+                <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-sm text-label-sm rounded uppercase tracking-tighter">M.Sc.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 (IIT Bombay) -->
+          <div onclick="window.location.href='/details.html'" class="min-w-[400px] snap-start group cursor-pointer bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-[0px_4px_20px_rgba(15,23,42,0.05)] hover:shadow-[0px_10px_30px_rgba(15,23,42,0.08)] hover:-translate-y-2 transition-all duration-300">
+            <div class="relative aspect-video overflow-hidden">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0" alt="IIT Bombay Campus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy_Vv5ALKOXENxQ48WR8qjtUXC14sVE1ViHYMwHLg8jGSFbFXW22yEb25C4AcDcROGFJeph_JkrHUbnMDhSZzBEYkpvkojQYyjt-tE435jeQqkQwaXAiXysIIEn4OzVyF0hzHhEtUT-r7SsnF6SN91V0W6aoFO2fLEzi08LdHpC81cEEgUQiIYgY9STxVH6FokWt6QugNCbw887KsO9Hejg7FFS7t1Ht2lQceShs1oWqtEbW_Ol4_R2-jMGJaORAOeo8yCZDK_7IQv"/>
+              <div class="absolute top-4 right-4 bg-primary/90 text-white px-3 py-1 rounded-full font-label-sm text-label-sm">
+                NIRF #3
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">IIT Bombay</h3>
+                <span class="material-symbols-outlined text-outline">bookmark</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-secondary mb-4 flex items-center gap-1">
+                <span class="material-symbols-outlined text-[18px]">location_on</span> Mumbai, Maharashtra
+              </p>
+              <div class="flex gap-2">
+                <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-sm text-label-sm rounded uppercase tracking-tighter">B.Tech</span>
+                <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-sm text-label-sm rounded uppercase tracking-tighter">Design</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 (IIIT Hyderabad) -->
+          <div onclick="window.location.href='/details.html'" class="min-w-[400px] snap-start group cursor-pointer bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden shadow-[0px_4px_20px_rgba(15,23,42,0.05)] hover:shadow-[0px_10px_30px_rgba(15,23,42,0.08)] hover:-translate-y-2 transition-all duration-300">
+            <div class="relative aspect-video overflow-hidden">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale hover:grayscale-0" alt="IIIT Hyderabad Campus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMOV_jStA-cmZYR3Zs-YKS7Z_mpnDcW8qgpMqJpc8lN7AVh_2JgXYTrKnJsio8rvKXpjRr-XxCaZsy6WWBUXc0sQJ5fYclIT7RGCBiGZoVD17FNqgdDEc6bCw3WUU7pX4_DMb0fxXqc6DUh6Nky6SZa74muyRpBMncd9ZKScAa4GcqQTr6I59Mq7mQLx3FFlsIk_prfW5b1aQm7vYCFtZVWBvJHkDIYxyCBP-PRCFyLDs5L9qzKzPY9OSvvwyfSYtLTiR3I8eGUXns"/>
+              <div class="absolute top-4 right-4 bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-label-sm text-label-sm">
+                Tech Star
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-headline-md text-headline-md group-hover:text-primary transition-colors">IIIT Hyderabad</h3>
+                <span class="material-symbols-outlined text-outline">bookmark</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-secondary mb-4 flex items-center gap-1">
+                <span class="material-symbols-outlined text-[18px]">location_on</span> Gachibowli, Telangana
+              </p>
+              <div class="flex gap-2">
+                <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-sm text-label-sm rounded uppercase tracking-tighter">B.Tech CS</span>
+                <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-sm text-label-sm rounded uppercase tracking-tighter">Research</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bento Stats / Info Section -->
+    <section id="predict" class="py-stack-xl bg-surface-container-low">
+      <div class="max-w-container-max mx-auto px-margin-desktop">
+        <div class="text-center mb-stack-lg">
+          <h2 class="font-headline-lg text-headline-lg mb-4">Why navigate with EduArch?</h2>
+          <p class="font-body-md text-body-md text-secondary max-w-xl mx-auto">We provide the architectural rigor needed to make life-changing academic decisions.</p>
+        </div>
+        <div class="bento-grid">
+          <!-- Bento item 1: Large -->
+          <div class="col-span-12 md:col-span-8 bg-surface-container-lowest p-stack-lg rounded-xl border border-outline-variant shadow-[0px_4px_20px_rgba(15,23,42,0.05)] flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined">analytics</span>
+              </div>
+              <h3 class="font-headline-md text-headline-md mb-4">Precision Predictor</h3>
+              <p class="font-body-md text-body-md text-secondary mb-8 max-w-md">Our proprietary algorithm analyzes over 10 years of cutoff data and student profiles to predict your chances at India's top 500 institutions with 94% accuracy.</p>
+            </div>
+            <div class="w-full bg-surface-container-low rounded-lg p-6">
+              <div class="flex justify-between items-end mb-4">
+                <span class="font-label-md text-label-md">Chance at IITB</span>
+                <span class="font-display-lg text-headline-lg text-primary">82%</span>
+              </div>
+              <div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+                <div class="w-[82%] h-full bg-primary transition-all duration-1000"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Bento item 2: Small -->
+          <div class="col-span-12 md:col-span-4 bg-primary text-on-primary p-stack-lg rounded-xl shadow-lg flex flex-col justify-center text-center">
+            <span class="material-symbols-outlined text-[64px] mb-4">shield</span>
+            <h3 class="font-headline-md text-headline-md mb-2">Verified Data</h3>
+            <p class="font-body-sm text-body-sm opacity-90">Every placement record and fee structure is verified by our audit team and alumni network.</p>
+            <button onclick="window.location.href='/explore.html'" class="mt-8 px-6 py-2 bg-white text-primary rounded-lg font-bold hover:bg-opacity-90 transition-all font-label-md text-label-md">Learn More</button>
+          </div>
+          <!-- Bento item 3: Medium -->
+          <div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-stack-lg rounded-xl border border-outline-variant shadow-[0px_4px_20px_rgba(15,23,42,0.05)]">
+            <div class="w-12 h-12 bg-tertiary/10 text-tertiary rounded-lg flex items-center justify-center mb-6">
+              <span class="material-symbols-outlined">payments</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md mb-2">ROI Calculator</h3>
+            <p class="font-body-sm text-body-sm text-secondary">Calculate the actual time it takes to recover your investment based on real starting salaries.</p>
+          </div>
+          <!-- Bento item 4: Medium -->
+          <div class="col-span-12 md:col-span-8 bg-surface-container-lowest p-stack-lg rounded-xl border border-outline-variant shadow-[0px_4px_20px_rgba(15,23,42,0.05)] flex items-center gap-8">
+            <div class="hidden sm:block min-w-[120px]">
+              <img class="w-full h-24 object-cover rounded-lg" alt="Mentorship" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaPwDvVPGf2wmXzgyWgId2WYF6DjI4iBXETBfFx3fujWk69r5YeGIC7q4GFnkZ_OveMaP-dlOvppPa3nb-Kv-VLDVLNiWq-guVy_Q0XexoywFE56KKbND-ger8kDGVNRZWdqNqvTiHu45eG0_ZKe1a3nJzv7IbsWV5hHP4ZDv7Lnjm4DBjCjGblojusFbPp9BAjlO2tgXz-PhA56BqDLIxXBUOl9osVwyJhjLeH8aRtTeUccm15nlFNnpZOXzLNLn-KgGlaucisldX"/>
+            </div>
+            <div>
+              <h3 class="font-headline-md text-headline-md mb-2">Connect with Alumni</h3>
+              <p class="font-body-sm text-body-sm text-secondary">Don't just look at numbers. Chat with current students and alumni to understand the ground reality of campus life.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-surface-container-lowest border-t border-outline-variant mt-stack-xl">
+    <div class="w-full py-stack-lg px-margin-desktop flex flex-col md:flex-row justify-between items-start md:items-center max-w-container-max mx-auto gap-8">
+      <div class="flex flex-col gap-4">
+        <a href="/index.html" class="font-headline-lg text-headline-lg font-bold text-on-surface hover:opacity-90 transition-opacity">EduArch</a>
+        <p class="font-body-sm text-body-sm text-secondary max-w-xs">
+          © 2024 EduArch. Precise navigation for academic ambition.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-stack-lg">
+        <div class="flex flex-col gap-3">
+          <span class="font-label-md text-label-md font-bold text-on-surface">Platform</span>
+          <a class="text-secondary font-label-sm text-label-sm hover:text-primary transition-colors" href="/explore.html">Explore</a>
+          <a class="text-secondary font-label-sm text-label-sm hover:text-primary transition-colors" href="/compare.html">Compare</a>
+          <a class="text-secondary font-label-sm text-label-sm hover:text-primary transition-colors" href="/index.html#predict">Predict</a>
+        </div>
+        <div class="flex flex-col gap-3">
+          <span class="font-label-md text-label-md font-bold text-on-surface">Legal</span>
+          <a class="text-secondary font-label-sm text-label-sm hover:text-primary transition-colors" href="#">Privacy</a>
+          <a class="text-secondary font-label-sm text-label-sm hover:text-primary transition-colors" href="#">Terms</a>
+        </div>
+        <div class="flex flex-col gap-3">
+          <span class="font-label-md text-label-md font-bold text-on-surface">Support</span>
+          <a class="text-secondary font-label-sm text-label-sm hover:text-primary transition-colors" href="#">Contact</a>
+          <a class="text-secondary font-label-sm text-label-sm hover:text-primary transition-colors" href="#">FAQ</a>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-container-max mx-auto px-margin-desktop py-8 border-t border-outline-variant flex justify-between items-center opacity-80 hover:opacity-100 transition-opacity">
+      <div class="flex gap-4">
+        <a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-secondary hover:text-primary transition-all" href="#">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-secondary hover:text-primary transition-all" href="#">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+      <span class="font-label-sm text-label-sm text-secondary">Crafted with precision.</span>
+    </div>
+  </footer>
+
+  <script>
+    function scrollCarousel(direction) {
+      const container = document.getElementById('college-carousel');
+      const scrollAmount = 424; // Card width + gap
+      container.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+
+    // Add subtle parallax/shimmer to hero
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      const hero = document.querySelector('.hero-gradient');
+      if (hero) {
+        hero.style.background = `radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(37, 99, 235, 0.08) 0%, rgba(250, 248, 255, 0) 70%)`;
+      }
+    });
+  </script>
+</body>
+</html>

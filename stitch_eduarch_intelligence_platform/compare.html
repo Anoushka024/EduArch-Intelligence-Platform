@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>EduArch | College Comparison Experience</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-tint": "#0053db",
+            "on-background": "#131b2e",
+            "surface": "#faf8ff",
+            "inverse-surface": "#283044",
+            "on-error-container": "#93000a",
+            "error-container": "#ffdad6",
+            "on-primary-fixed": "#00174b",
+            "tertiary": "#006242",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed": "#002113",
+            "on-surface-variant": "#434655",
+            "on-primary-fixed-variant": "#003ea8",
+            "inverse-on-surface": "#eef0ff",
+            "surface-bright": "#faf8ff",
+            "on-secondary-fixed": "#0b1c30",
+            "on-secondary": "#ffffff",
+            "surface-container-highest": "#dae2fd",
+            "inverse-primary": "#b4c5ff",
+            "on-secondary-container": "#54647a",
+            "on-error": "#ffffff",
+            "primary": "#004ac6",
+            "tertiary-container": "#007d55",
+            "on-tertiary-container": "#bdffdb",
+            "outline": "#737686",
+            "on-primary-container": "#eeefff",
+            "surface-dim": "#d2d9f4",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-tertiary-fixed-variant": "#005236",
+            "secondary-container": "#d0e1fb",
+            "background": "#faf8ff",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed-dim": "#b7c8e1",
+            "primary-container": "#2563eb",
+            "tertiary-fixed": "#6ffbbe",
+            "on-secondary-fixed-variant": "#38485d",
+            "secondary": "#505f76",
+            "surface-container-low": "#f2f3ff",
+            "surface-container-high": "#e2e7ff",
+            "outline-variant": "#c3c6d7",
+            "on-surface": "#131b2e",
+            "surface-container": "#eaedff",
+            "primary-fixed-dim": "#b4c5ff",
+            "surface-variant": "#dae2fd",
+            "secondary-fixed": "#d3e4fe",
+            "primary-fixed": "#dbe1ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "16px",
+            "base": "8px",
+            "gutter": "24px",
+            "stack-sm": "12px",
+            "stack-xl": "80px",
+            "container-max": "1280px",
+            "stack-md": "24px",
+            "stack-xs": "4px",
+            "margin-desktop": "40px",
+            "stack-lg": "48px"
+          },
+          "fontFamily": {
+            "label-sm": ["Geist"],
+            "body-lg": ["Inter"],
+            "display-lg": ["Geist"],
+            "headline-md": ["Geist"],
+            "display-lg-mobile": ["Geist"],
+            "body-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-md": ["Geist"],
+            "headline-lg": ["Geist"]
+          },
+          "fontSize": {
+            "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+            "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+    }
+    .comparison-sticky-header {
+      position: sticky;
+      top: 64px;
+      z-index: 30;
+      backdrop-filter: blur(12px);
+    }
+    .winner-glow {
+      box-shadow: 0 0 20px rgba(0, 74, 198, 0.1);
+    }
+    .row-transition:hover {
+      background-color: rgba(242, 243, 255, 0.5);
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c3c6d7;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+  <!-- TopNavBar -->
+  <header class="bg-surface-container-lowest dark:bg-on-background fixed top-0 w-full z-50 border-b border-outline-variant dark:border-outline shadow-[0px_4px_20px_rgba(15,23,42,0.05)]">
+    <div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+      <div class="flex items-center gap-8">
+        <a href="/index.html" class="font-display-lg text-display-lg font-bold text-on-surface dark:text-on-primary-fixed hover:opacity-90 transition-opacity">EduArch</a>
+        <nav class="hidden md:flex gap-6 items-center">
+          <a class="text-secondary dark:text-secondary-fixed-dim font-medium hover:text-primary transition-colors font-label-md text-label-md" href="/explore.html">Explore</a>
+          <a class="text-primary dark:text-primary-fixed border-b-2 border-primary font-bold pb-1 font-label-md text-label-md" href="/compare.html">Compare</a>
+          <a class="text-secondary dark:text-secondary-fixed-dim font-medium hover:text-primary transition-colors font-label-md text-label-md" href="/index.html#predict">Predict</a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-4">
+        <form action="/explore.html" method="GET" class="relative hidden lg:block">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+          <input name="college" class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full text-body-sm focus:outline-none focus:ring-2 focus:ring-primary/20 w-64" placeholder="Search institutions..." type="text"/>
+        </form>
+        <button onclick="window.location.href='/explore.html'" class="px-5 py-2 rounded-full font-label-md text-label-md bg-primary text-on-primary hover:bg-primary-container transition-all scale-95 active:scale-90">Get Started</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-24 pb-stack-xl">
+    <!-- Hero Section -->
+    <section class="max-w-container-max mx-auto px-margin-desktop mb-stack-lg">
+      <div class="flex flex-col md:flex-row justify-between items-end gap-6">
+        <div class="max-w-2xl">
+          <span class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Decision Matrix</span>
+          <h1 class="font-display-lg text-display-lg text-on-surface mb-4">Compare Academic Excellence</h1>
+          <p class="text-secondary text-body-lg font-body-lg">Data-driven insights to navigate your future. Select colleges to see side-by-side performance across key metrics.</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors">
+            <span class="material-symbols-outlined">share</span>
+          </button>
+          <button class="p-2 border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors">
+            <span class="material-symbols-outlined">file_download</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Table Container -->
+    <section class="max-w-container-max mx-auto px-margin-desktop">
+      <div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(15,23,42,0.05)]">
+        <!-- Sticky Headers -->
+        <div class="comparison-sticky-header bg-surface-container-lowest/95 grid grid-cols-4 border-b border-outline-variant transition-all">
+          <div class="p-6 border-r border-outline-variant flex flex-col justify-center">
+            <span class="font-label-md text-label-md text-secondary">3 Selected</span>
+            <button onclick="window.location.href='/explore.html'" class="text-primary text-label-sm font-label-sm mt-1 flex items-center gap-1 hover:underline">
+              Clear all <span class="material-symbols-outlined text-[14px]">close</span>
+            </button>
+          </div>
+          <!-- College 1 (Stanford) -->
+          <div onclick="window.location.href='/details.html'" class="p-6 border-r border-outline-variant flex flex-col gap-3 group relative overflow-hidden cursor-pointer hover:bg-surface-container-low transition-colors">
+            <div class="flex items-start justify-between">
+              <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">school</span>
+              </div>
+              <button onclick="event.stopPropagation(); window.location.href='/explore.html'" class="text-outline hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">close</span></button>
+            </div>
+            <div>
+              <h3 class="font-headline-md text-headline-md truncate group-hover:text-primary transition-colors">Stanford University</h3>
+              <p class="text-secondary text-body-sm font-body-sm">Palo Alto, CA</p>
+            </div>
+          </div>
+          <!-- College 2 (MIT) -->
+          <div onclick="window.location.href='/details.html'" class="p-6 border-r border-outline-variant flex flex-col gap-3 group relative overflow-hidden bg-primary/[0.02] cursor-pointer hover:bg-surface-container-low transition-colors">
+            <div class="absolute top-0 right-0 p-2">
+              <span class="bg-primary/10 text-primary text-[10px] px-2 py-0.5 rounded-full font-bold">FAVORITE</span>
+            </div>
+            <div class="flex items-start justify-between">
+              <div class="w-12 h-12 bg-tertiary/10 rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+              </div>
+              <button onclick="event.stopPropagation(); window.location.href='/explore.html'" class="text-outline hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">close</span></button>
+            </div>
+            <div>
+              <h3 class="font-headline-md text-headline-md truncate group-hover:text-primary transition-colors">MIT</h3>
+              <p class="text-secondary text-body-sm font-body-sm">Cambridge, MA</p>
+            </div>
+          </div>
+          <!-- College 3 (ETH Zurich) -->
+          <div onclick="window.location.href='/details.html'" class="p-6 flex flex-col gap-3 group relative overflow-hidden cursor-pointer hover:bg-surface-container-low transition-colors">
+            <div class="flex items-start justify-between">
+              <div class="w-12 h-12 bg-on-secondary-fixed-variant/10 rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-on-secondary-fixed-variant" style="font-variation-settings: 'FILL' 1;">architecture</span>
+              </div>
+              <button onclick="event.stopPropagation(); window.location.href='/explore.html'" class="text-outline hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">close</span></button>
+            </div>
+            <div>
+              <h3 class="font-headline-md text-headline-md truncate group-hover:text-primary transition-colors">ETH Zurich</h3>
+              <p class="text-secondary text-body-sm font-body-sm">Zurich, CH</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Rankings -->
+        <div class="grid grid-cols-4 border-b border-outline-variant row-transition group">
+          <div class="p-6 bg-surface-container-low/30 border-r border-outline-variant">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="material-symbols-outlined text-outline text-[18px]">leaderboard</span>
+              <span class="font-label-md text-label-md text-on-surface">Global Ranking</span>
+            </div>
+            <p class="text-body-sm font-body-sm text-secondary">QS World University 2024</p>
+          </div>
+          <!-- Data 1 -->
+          <div class="p-6 border-r border-outline-variant flex flex-col justify-center">
+            <span class="font-display-lg text-[32px] font-bold text-on-surface">#5</span>
+            <span class="text-label-sm font-label-sm text-secondary uppercase">Rank</span>
+          </div>
+          <!-- Data 2 (Winner) -->
+          <div class="p-6 border-r border-outline-variant flex flex-col justify-center bg-primary/[0.04]">
+            <div class="flex items-center justify-between">
+              <span class="font-display-lg text-[32px] font-bold text-primary">#1</span>
+              <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+            </div>
+            <span class="text-label-sm font-label-sm text-primary uppercase">Top Performer</span>
+          </div>
+          <!-- Data 3 -->
+          <div class="p-6 flex flex-col justify-center">
+            <span class="font-display-lg text-[32px] font-bold text-on-surface">#7</span>
+            <span class="text-label-sm font-label-sm text-secondary uppercase">Rank</span>
+          </div>
+        </div>
+
+        <!-- Category: Fees -->
+        <div class="grid grid-cols-4 border-b border-outline-variant row-transition group">
+          <div class="p-6 bg-surface-container-low/30 border-r border-outline-variant">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="material-symbols-outlined text-outline text-[18px]">payments</span>
+              <span class="font-label-md text-label-md text-on-surface">Annual Tuition</span>
+            </div>
+            <p class="text-body-sm font-body-sm text-secondary">Undergraduate Full-time</p>
+          </div>
+          <!-- Data 1 -->
+          <div class="p-6 border-r border-outline-variant flex flex-col justify-center">
+            <span class="font-headline-lg text-headline-lg text-on-surface">$62,484</span>
+            <div class="flex items-center gap-1 mt-1">
+              <span class="w-2 h-2 rounded-full bg-error"></span>
+              <span class="text-label-sm font-label-sm text-secondary">Above Average</span>
+            </div>
+          </div>
+          <!-- Data 2 -->
+          <div class="p-6 border-r border-outline-variant flex flex-col justify-center">
+            <span class="font-headline-lg text-headline-lg text-on-surface">$59,750</span>
+            <div class="flex items-center gap-1 mt-1">
+              <span class="w-2 h-2 rounded-full bg-outline"></span>
+              <span class="text-label-sm font-label-sm text-secondary">Competitive</span>
+            </div>
+          </div>
+          <!-- Data 3 (Winner - ROI) -->
+          <div class="p-6 flex flex-col justify-center bg-tertiary/[0.04]">
+            <div class="flex items-center justify-between">
+              <span class="font-headline-lg text-headline-lg text-tertiary">$1,460</span>
+              <span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            </div>
+            <div class="flex items-center gap-1 mt-1">
+              <span class="text-label-sm font-label-sm text-tertiary uppercase">Most Affordable</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Placements (Charts) -->
+        <div class="grid grid-cols-4 border-b border-outline-variant row-transition group">
+          <div class="p-6 bg-surface-container-low/30 border-r border-outline-variant">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="material-symbols-outlined text-outline text-[18px]">monitoring</span>
+              <span class="font-label-md text-label-md text-on-surface">Placement Rate</span>
+            </div>
+            <p class="text-body-sm font-body-sm text-secondary">Employment within 6 mos.</p>
+          </div>
+          <!-- Chart 1 -->
+          <div class="p-6 border-r border-outline-variant flex flex-col justify-center gap-2">
+            <div class="flex items-end justify-between">
+              <span class="font-headline-md text-headline-md">94%</span>
+              <div class="flex items-end gap-[2px]">
+                <div class="w-2 h-8 bg-primary rounded-t-sm"></div>
+                <div class="w-2 h-10 bg-primary rounded-t-sm"></div>
+                <div class="w-2 h-12 bg-primary rounded-t-sm"></div>
+                <div class="w-2 h-11 bg-primary rounded-t-sm"></div>
+              </div>
+            </div>
+            <div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+              <div class="bg-primary h-full w-[94%] transition-all duration-1000"></div>
+            </div>
+          </div>
+          <!-- Chart 2 -->
+          <div class="p-6 border-r border-outline-variant flex flex-col justify-center gap-2 bg-primary/[0.04]">
+            <div class="flex items-end justify-between">
+              <span class="font-headline-md text-headline-md text-primary">97%</span>
+              <div class="flex items-end gap-[2px]">
+                <div class="w-2 h-10 bg-primary rounded-t-sm"></div>
+                <div class="w-2 h-11 bg-primary rounded-t-sm"></div>
+                <div class="w-2 h-14 bg-primary rounded-t-sm"></div>
+                <div class="w-2 h-13 bg-primary rounded-t-sm"></div>
+              </div>
+            </div>
+            <div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+              <div class="bg-primary h-full w-[97%] transition-all duration-1000"></div>
+            </div>
+          </div>
+          <!-- Chart 3 -->
+          <div class="p-6 flex flex-col justify-center gap-2">
+            <div class="flex items-end justify-between">
+              <span class="font-headline-md text-headline-md">92%</span>
+              <div class="flex items-end gap-[2px]">
+                <div class="w-2 h-9 bg-primary rounded-t-sm"></div>
+                <div class="w-2 h-9 bg-primary rounded-t-sm"></div>
+                <div class="w-2 h-11 bg-primary rounded-t-sm"></div>
+                <div class="w-2 h-10 bg-primary rounded-t-sm"></div>
+              </div>
+            </div>
+            <div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+              <div class="bg-primary h-full w-[92%] transition-all duration-1000"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: ROI -->
+        <div class="grid grid-cols-4 border-b border-outline-variant row-transition group">
+          <div class="p-6 bg-surface-container-low/30 border-r border-outline-variant">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="material-symbols-outlined text-outline text-[18px]">trending_up</span>
+              <span class="font-label-md text-label-md text-on-surface">Avg. Salary (10yr)</span>
+            </div>
+            <p class="text-body-sm font-body-sm text-secondary">Estimated ROI factor</p>
+          </div>
+          <div class="p-6 border-r border-outline-variant flex items-center gap-3">
+            <span class="font-headline-md text-headline-md">$142k</span>
+            <span class="text-tertiary text-label-sm bg-tertiary/10 px-2 py-1 rounded">High</span>
+          </div>
+          <div class="p-6 border-r border-outline-variant flex items-center gap-3 bg-primary/[0.04]">
+            <span class="font-headline-md text-headline-md text-primary">$158k</span>
+            <span class="text-tertiary text-label-sm bg-tertiary/10 px-2 py-1 rounded">Elite</span>
+          </div>
+          <div class="p-6 flex items-center gap-3">
+            <span class="font-headline-md text-headline-md">$115k</span>
+            <span class="text-secondary text-label-sm bg-surface-container-high px-2 py-1 rounded">Stable</span>
+          </div>
+        </div>
+
+        <!-- Category: Campus Experience -->
+        <div class="grid grid-cols-4 border-b border-outline-variant row-transition">
+          <div class="p-6 bg-surface-container-low/30 border-r border-outline-variant">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="material-symbols-outlined text-outline text-[18px]">photo_library</span>
+              <span class="font-label-md text-label-md text-on-surface">Campus Visuals</span>
+            </div>
+            <p class="text-body-sm font-body-sm text-secondary">Student life gallery</p>
+          </div>
+          <div class="p-4 border-r border-outline-variant">
+            <div class="aspect-video rounded-lg overflow-hidden relative">
+              <img class="w-full h-full object-cover" alt="Stanford Campus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsCzJrtiWpQZZH3WaKDedPNbJi8OiJuuUEJdNTjEnb1dR32zBELj1AWQL4Cfx4vHiDIiWAKgbvpsauRwZqHFCM6n0gb_NPCBNFUTjy9lA3IXq4hq6_Fwskso30roR6K3Kpr0zasCj0O5GRY1mQbqLf0LixYHnLFeEyr94ftnPhmMPyZnTW7RcjynMeuQGnnD7bwhgV98_AkMFX-FvIB4mLBetPnK-yzE7tH1-72AxhJl1zqrEKsl_wHE8mX5fqFH33iZBSCOR79ujy"/>
+            </div>
+          </div>
+          <div class="p-4 border-r border-outline-variant bg-primary/[0.04]">
+            <div class="aspect-video rounded-lg overflow-hidden relative">
+              <img class="w-full h-full object-cover" alt="MIT Campus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3g4_FsNYkQqXPjaSW0GijQkKUQkk1_XDuJmzTiOAr_udbOpYSJpKqCuw_aPPf1WXF3c-_1Bo1IcGJk8vbrU8dwj-8VoCbc1pWXXyjaXnEhljdNSm7eBsgeNNigcZgQli0ytNvdC-WcXdL0fQweBsoM90iQp6qm-Vefr0HRLKvPBpfj51TlR38F_Ed0ErZ6iWB9b9uiJc9Xg_cfZYj1151ZNfKtGv2qH700oI_KZ4bh8CH5Pn9TMEsyQ4TNnpv99g7GEhJBL3OmS28"/>
+            </div>
+          </div>
+          <div class="p-4">
+            <div class="aspect-video rounded-lg overflow-hidden relative">
+              <img class="w-full h-full object-cover" alt="ETH Zurich Campus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvKzePcy4R1WLWuNXLOPr4E07gPEXvNG3vDk5AZ7ck5dyjcThI96tbQA_6FurqO_O_zT_IgUNIQVgGXohUAD-PbkNI4dnnEvQDfuvzmCsw3tv4Br69Vc7SaTsviUDD1sWezXUzgaeMcepdeZfdOwgVjgMcvCrtZg9GAmGbOnUDqMUTrAMZIKrfCpu5c9c2Q9TFVpblDmKiHt6PJ-D-8d9ezUv3_1XUuLJlGIhSwoPCXjcrQ4q9KxlIKUUcvGjohZAEFetp9NhV-msA"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Ratings -->
+        <div class="grid grid-cols-4 row-transition">
+          <div class="p-6 bg-surface-container-low/30 border-r border-outline-variant">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="material-symbols-outlined text-outline text-[18px]">star</span>
+              <span class="font-label-md text-label-md text-on-surface">Student Rating</span>
+            </div>
+            <p class="text-body-sm font-body-sm text-secondary">Verified student reviews</p>
+          </div>
+          <!-- Rating 1 -->
+          <div class="p-6 border-r border-outline-variant flex flex-col justify-center">
+            <div class="flex gap-1 text-primary">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined">star_half</span>
+            </div>
+            <span class="text-body-sm font-body-sm mt-1">4.8 / 5.0</span>
+          </div>
+          <!-- Rating 2 -->
+          <div class="p-6 border-r border-outline-variant flex flex-col justify-center bg-primary/[0.04]">
+            <div class="flex gap-1 text-primary">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <span class="text-body-sm font-body-sm mt-1">4.9 / 5.0</span>
+          </div>
+          <!-- Rating 3 -->
+          <div class="p-6 flex flex-col justify-center">
+            <div class="flex gap-1 text-primary">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined">star</span>
+            </div>
+            <span class="text-body-sm font-body-sm mt-1">4.7 / 5.0</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Insights Bento Section -->
+    <section class="max-w-container-max mx-auto px-margin-desktop mt-stack-xl">
+      <h2 class="font-headline-lg text-headline-lg mb-stack-md">AI Comparison Summary</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Highlight 1 -->
+        <div class="md:col-span-2 p-8 bg-surface-container border border-outline-variant rounded-2xl relative overflow-hidden">
+          <div class="relative z-10">
+            <span class="bg-tertiary text-on-tertiary px-3 py-1 rounded-full text-label-sm font-label-sm mb-4 inline-block">Key Winner: ETH Zurich</span>
+            <h3 class="font-headline-md text-headline-md mb-3">Best Value for Global Recognition</h3>
+            <p class="text-body-md text-secondary max-w-lg">ETH Zurich offers a world-class education at a fraction of the cost of US Ivy-League counterparts, resulting in the highest ROI metric in our current dataset. Ideal for high-ambition students with budget consciousness.</p>
+            <button onclick="window.location.href='/details.html'" class="mt-6 flex items-center gap-2 text-primary font-label-md hover:gap-3 transition-all">
+              Read detailed ROI analysis <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+          </div>
+          <div class="absolute -right-20 -bottom-20 opacity-10">
+            <span class="material-symbols-outlined text-[300px]" style="font-variation-settings: 'FILL' 1;">euro_symbol</span>
+          </div>
+        </div>
+        <!-- Highlight 2 -->
+        <div class="p-8 bg-surface-container-highest border border-outline-variant rounded-2xl flex flex-col justify-between">
+          <div>
+            <span class="material-symbols-outlined text-primary text-[40px] mb-4">insights</span>
+            <h3 class="font-headline-md text-headline-md mb-2">Similarity Check</h3>
+            <p class="text-body-sm text-secondary">All three institutions share a <span class="text-on-surface font-bold">90%+ placement rate</span> and elite research facilities.</p>
+          </div>
+          <div class="flex -space-x-3 mt-4">
+            <div class="w-10 h-10 rounded-full border-2 border-surface-container-highest bg-primary/20 flex items-center justify-center text-[10px] font-bold">S</div>
+            <div class="w-10 h-10 rounded-full border-2 border-surface-container-highest bg-tertiary/20 flex items-center justify-center text-[10px] font-bold">M</div>
+            <div class="w-10 h-10 rounded-full border-2 border-surface-container-highest bg-secondary/20 flex items-center justify-center text-[10px] font-bold">E</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SideNavBar (Mobile Filters - Hidden on desktop) -->
+  <div class="fixed inset-0 bg-black/50 z-50 hidden" id="mobile-filter">
+    <div class="absolute right-0 top-0 h-full w-64 bg-surface dark:bg-on-background p-4 flex flex-col gap-4">
+      <div class="flex items-center justify-between">
+        <span class="font-headline-md text-headline-md font-bold text-on-surface">Filters</span>
+        <button onclick="toggleFilter()"><span class="material-symbols-outlined">close</span></button>
+      </div>
+      <p class="text-body-sm text-secondary">Refine Results</p>
+      <nav class="flex flex-col gap-2">
+        <div class="flex items-center gap-3 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg px-4 py-2 font-bold transition-transform translate-x-1">
+          <span class="material-symbols-outlined">payments</span> Fees
+        </div>
+        <div class="flex items-center gap-3 text-secondary dark:text-secondary-fixed-dim px-4 py-2 hover:bg-surface-container-high transition-colors">
+          <span class="material-symbols-outlined">star</span> Rating
+        </div>
+        <div class="flex items-center gap-3 text-secondary dark:text-secondary-fixed-dim px-4 py-2 hover:bg-surface-container-high transition-colors">
+          <span class="material-symbols-outlined">location_on</span> Location
+        </div>
+        <div class="flex items-center gap-3 text-secondary dark:text-secondary-fixed-dim px-4 py-2 hover:bg-surface-container-high transition-colors">
+          <span class="material-symbols-outlined">school</span> Course
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-surface-container-lowest dark:bg-on-background border-t border-outline-variant mt-stack-lg">
+    <div class="w-full py-stack-lg px-margin-desktop flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto">
+      <div class="mb-6 md:mb-0">
+        <a href="/index.html" class="font-headline-lg text-headline-lg font-bold text-on-surface">EduArch</a>
+        <p class="text-secondary dark:text-secondary-fixed-dim text-body-sm font-body-sm mt-2 opacity-80">© 2024 EduArch. Precise navigation for academic ambition.</p>
+      </div>
+      <div class="flex gap-8">
+        <a class="text-secondary dark:text-secondary-fixed-dim font-label-sm text-label-sm hover:text-primary transition-colors hover:underline underline-offset-4 opacity-80 hover:opacity-100" href="/explore.html">Mission</a>
+        <a class="text-secondary dark:text-secondary-fixed-dim font-label-sm text-label-sm hover:text-primary transition-colors hover:underline underline-offset-4 opacity-80 hover:opacity-100" href="#">Privacy</a>
+        <a class="text-secondary dark:text-secondary-fixed-dim font-label-sm text-label-sm hover:text-primary transition-colors hover:underline underline-offset-4 opacity-80 hover:opacity-100" href="#">Terms</a>
+        <a class="text-secondary dark:text-secondary-fixed-dim font-label-sm text-label-sm hover:text-primary transition-colors hover:underline underline-offset-4 opacity-80 hover:opacity-100" href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFilter() {
+      const filter = document.getElementById('mobile-filter');
+      filter.classList.toggle('hidden');
+    }
+
+    // Add sticky header behavior - background change on scroll
+    window.addEventListener('scroll', () => {
+      const stickyHeader = document.querySelector('.comparison-sticky-header');
+      if (stickyHeader) {
+        if (window.scrollY > 150) {
+          stickyHeader.classList.add('shadow-md');
+        } else {
+          stickyHeader.classList.remove('shadow-md');
+        }
+      }
+    });
+
+    // Initialize micro-interactions
+    document.querySelectorAll('.row-transition').forEach(row => {
+      row.addEventListener('mouseenter', () => {
+        const icon = row.querySelector('.material-symbols-outlined');
+        if (icon) icon.classList.add('scale-110');
+      });
+      row.addEventListener('mouseleave', () => {
+        const icon = row.querySelector('.material-symbols-outlined');
+        if (icon) icon.classList.remove('scale-110');
+      });
+    });
+  </script>
+</body>
+</html>

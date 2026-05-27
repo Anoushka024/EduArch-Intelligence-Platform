@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IIT Bombay | EduArch Academic Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Geist:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#0053db",
+                    "on-background": "#131b2e",
+                    "surface": "#faf8ff",
+                    "inverse-surface": "#283044",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#00174b",
+                    "tertiary": "#006242",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#002113",
+                    "on-surface-variant": "#434655",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "inverse-on-surface": "#eef0ff",
+                    "surface-bright": "#faf8ff",
+                    "on-secondary-fixed": "#0b1c30",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#dae2fd",
+                    "inverse-primary": "#b4c5ff",
+                    "on-secondary-container": "#54647a",
+                    "on-error": "#ffffff",
+                    "primary": "#004ac6",
+                    "tertiary-container": "#007d55",
+                    "on-tertiary-container": "#bdffdb",
+                    "outline": "#737686",
+                    "on-primary-container": "#eeefff",
+                    "surface-dim": "#d2d9f4",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "secondary-container": "#d0e1fb",
+                    "background": "#faf8ff",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "primary-container": "#2563eb",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "secondary": "#505f76",
+                    "surface-container-low": "#f2f3ff",
+                    "surface-container-high": "#e2e7ff",
+                    "outline-variant": "#c3c6d7",
+                    "on-surface": "#131b2e",
+                    "surface-container": "#eaedff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "surface-variant": "#dae2fd",
+                    "secondary-fixed": "#d3e4fe",
+                    "primary-fixed": "#dbe1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "base": "8px",
+                    "gutter": "24px",
+                    "stack-sm": "12px",
+                    "stack-xl": "80px",
+                    "container-max": "1280px",
+                    "stack-md": "24px",
+                    "stack-xs": "4px",
+                    "margin-desktop": "40px",
+                    "stack-lg": "48px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Geist"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Geist"],
+                    "headline-md": ["Geist"],
+                    "display-lg-mobile": ["Geist"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-md": ["Geist"],
+                    "headline-lg": ["Geist"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrolling-wrapper {
+            display: flex;
+            width: fit-content;
+            animation: scroll 40s linear infinite;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-surface-container-lowest border-b border-outline-variant shadow-[0px_4px_20px_rgba(15,23,42,0.05)]">
+<nav class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-10">
+<span class="font-display-lg text-display-lg font-bold text-on-surface">EduArch</span>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-secondary font-medium hover:text-primary transition-colors font-label-md text-label-md" href="#">Explore</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors font-label-md text-label-md" href="#">Compare</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors font-label-md text-label-md" href="#">Predict</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-secondary font-medium px-4 py-2 hover:bg-surface-container-low transition-all duration-200 rounded-lg font-label-md text-label-md">Sign In</button>
+<button class="bg-primary-container text-on-primary px-6 py-2.5 rounded-lg font-bold font-label-md text-label-md scale-95 active:scale-90 transition-transform">Get Started</button>
+</div>
+</nav>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Section -->
+<section class="mt-stack-lg relative rounded-xl overflow-hidden group">
+<div class="h-[500px] w-full relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A wide-angle cinematic shot of the iconic IIT Bombay campus at sunset, showing the brutalist architecture of the Main Building framed by lush greenery and a serene lake. The lighting is golden and warm, casting long shadows across the organized walkways. The atmosphere is prestigious and peaceful, representing intellectual excellence in a modern light-mode color palette of soft blues and whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDem6Tj-5GIF_g7s9vEKKmTmdTT4RqTBdVB954heCcJ4FlfKQBx8u1B4PR4gk6s1z2XMgljhIHvXtYFhA1I2JbGikvwdW29c38xC9E2pOFCKUSZo0yRW99XLqIRuX1yOrP2wmDgd0Si8yZwjUQT3cC3QNkVmXAhiHUQh4SKf6nMfbjehHc44zIP7I__idKCNwaH54Avkp5OEeV7qXow-U5_cTO_sldwfn4np715EhgiKejGxI9vaun6XZZQI-twghQtM1sFVS1Z7SqZ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+</div>
+<div class="absolute bottom-0 left-0 p-stack-lg w-full flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+<div class="text-white space-y-4">
+<div class="flex gap-2">
+<span class="bg-primary-container/90 backdrop-blur-sm text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider">Top 1 INIRF</span>
+<span class="bg-surface-container-lowest/20 backdrop-blur-sm text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-wider">Institution of Eminence</span>
+</div>
+<h1 class="font-display-lg text-display-lg md:text-[56px]">Indian Institute of Technology, Bombay</h1>
+<div class="flex items-center gap-4 text-white/90">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+<span class="font-label-md text-label-md">Powai, Mumbai, Maharashtra</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md">4.9 (2.4k Reviews)</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="bg-white text-on-surface px-6 py-3 rounded-lg font-bold font-label-md text-label-md flex items-center gap-2 hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">bookmark</span> Save
+                    </button>
+<button class="bg-white text-on-surface px-6 py-3 rounded-lg font-bold font-label-md text-label-md flex items-center gap-2 hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined">compare_arrows</span> Compare
+                    </button>
+<button class="bg-primary text-white px-8 py-3 rounded-lg font-bold font-label-md text-label-md shadow-lg shadow-primary/20 transition-transform active:scale-95">Apply Now</button>
+</div>
+</div>
+</section>
+<!-- Main Content Area with Sticky Side Panel -->
+<div class="mt-stack-lg grid grid-cols-1 lg:grid-cols-12 gap-gutter pb-stack-xl">
+<!-- Left Content -->
+<div class="lg:col-span-8 space-y-stack-xl">
+<!-- Navigation Tabs -->
+<nav class="flex border-b border-outline-variant overflow-x-auto no-scrollbar sticky top-16 bg-background/95 backdrop-blur-md z-40">
+<a class="px-6 py-4 border-b-2 border-primary text-primary font-bold font-label-md text-label-md whitespace-nowrap" href="#overview">Overview</a>
+<a class="px-6 py-4 border-b-2 border-transparent text-secondary hover:text-primary transition-colors font-label-md text-label-md whitespace-nowrap" href="#courses">Courses</a>
+<a class="px-6 py-4 border-b-2 border-transparent text-secondary hover:text-primary transition-colors font-label-md text-label-md whitespace-nowrap" href="#placements">Placements</a>
+<a class="px-6 py-4 border-b-2 border-transparent text-secondary hover:text-primary transition-colors font-label-md text-label-md whitespace-nowrap" href="#campus">Campus Life</a>
+<a class="px-6 py-4 border-b-2 border-transparent text-secondary hover:text-primary transition-colors font-label-md text-label-md whitespace-nowrap" href="#reviews">Reviews</a>
+</nav>
+<!-- Overview -->
+<section class="space-y-stack-md" id="overview">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Institution Overview</h2>
+<p class="font-body-lg text-body-lg text-secondary leading-relaxed">
+                        Established in 1958, IIT Bombay is the second-oldest institute of the Indian Institutes of Technology system and is a worldwide leader in the field of engineering education and research. The institute is known for its strong faculty, who are among the best in the country, and for its gifted students, who are chosen through the highly competitive Joint Entrance Examination.
+                    </p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="p-6 rounded-xl bg-surface-container-low border border-outline-variant text-center">
+<span class="block font-display-lg text-[32px] text-primary">#1</span>
+<span class="font-label-sm text-label-sm uppercase text-secondary">QS India Ranking</span>
+</div>
+<div class="p-6 rounded-xl bg-surface-container-low border border-outline-variant text-center">
+<span class="block font-display-lg text-[32px] text-primary">550+</span>
+<span class="font-label-sm text-label-sm uppercase text-secondary">Total Faculty</span>
+</div>
+<div class="p-6 rounded-xl bg-surface-container-low border border-outline-variant text-center">
+<span class="block font-display-lg text-[32px] text-primary">10k+</span>
+<span class="font-label-sm text-label-sm uppercase text-secondary">Active Students</span>
+</div>
+<div class="p-6 rounded-xl bg-surface-container-low border border-outline-variant text-center">
+<span class="block font-display-lg text-[32px] text-primary">172</span>
+<span class="font-label-sm text-label-sm uppercase text-secondary">Global Rank (QS)</span>
+</div>
+</div>
+</section>
+<!-- Placements: Outcome Visualizations -->
+<section class="space-y-stack-lg" id="placements">
+<div class="flex justify-between items-end">
+<div class="space-y-2">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Placement Strength</h2>
+<p class="text-secondary font-body-md">Data-driven insights into career outcomes for the Class of 2023.</p>
+</div>
+<div class="hidden md:block">
+<button class="flex items-center gap-2 text-primary font-bold font-label-md text-label-md">
+                                Download Report <span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</div>
+<!-- Statistics Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="glass-panel p-8 rounded-2xl shadow-sm border border-outline-variant relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[120px]">currency_rupee</span>
+</div>
+<span class="text-secondary font-label-md text-label-md block mb-4">Highest Package (Intl)</span>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-[40px] text-primary">3.7</span>
+<span class="font-headline-md text-headline-md text-primary">Cr PA</span>
+</div>
+<div class="mt-4 flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="text-label-sm font-label-sm">+12% vs last year</span>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-2xl shadow-sm border border-outline-variant relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[120px]">payments</span>
+</div>
+<span class="text-secondary font-label-md text-label-md block mb-4">Average Package (CSE)</span>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-[40px] text-primary">42.5</span>
+<span class="font-headline-md text-headline-md text-primary">LPA</span>
+</div>
+<div class="mt-4 flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="text-label-sm font-label-sm">Consistent growth</span>
+</div>
+</div>
+<div class="glass-panel p-8 rounded-2xl shadow-sm border border-outline-variant relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[120px]">task_alt</span>
+</div>
+<span class="text-secondary font-label-md text-label-md block mb-4">Total Offers</span>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-[40px] text-primary">1,788</span>
+</div>
+<div class="mt-4 flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+<span class="text-label-sm font-label-sm">350+ Recruiters</span>
+</div>
+</div>
+</div>
+<!-- Asymmetric Placement visualization -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-7 bg-surface-container-low rounded-2xl p-8 border border-outline-variant">
+<h3 class="font-headline-md text-headline-md mb-6">Sector-wise Distribution</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-label-md text-on-surface">IT / Software</span>
+<span class="font-label-md text-label-md font-bold">38%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 38%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-label-md text-on-surface">Engineering &amp; Tech</span>
+<span class="font-label-md text-label-md font-bold">22%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full opacity-80" style="width: 22%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-label-md text-on-surface">Consulting</span>
+<span class="font-label-md text-label-md font-bold">18%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full opacity-60" style="width: 18%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-md text-label-md text-on-surface">Finance / Banking</span>
+<span class="font-label-md text-label-md font-bold">12%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full opacity-40" style="width: 12%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="md:col-span-5 bg-primary-container text-white rounded-2xl p-8 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md mb-4">Placement Success</h3>
+<p class="text-primary-fixed text-body-md mb-8">94% of graduating students secured placements within the first phase of the campus recruitment drive.</p>
+</div>
+<div class="relative w-full aspect-square max-w-[200px] mx-auto">
+<!-- Donut Chart Placeholder -->
+<div class="absolute inset-0 rounded-full border-[12px] border-white/20"></div>
+<div class="absolute inset-0 rounded-full border-[12px] border-white border-t-transparent border-l-transparent rotate-45"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-display-lg text-[32px]">94%</span>
+<span class="text-[10px] uppercase font-bold tracking-widest">Placed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Recruiter Wall -->
+<div class="space-y-6">
+<h3 class="font-label-md text-label-md text-secondary uppercase tracking-widest text-center">Top Global Recruiters</h3>
+<div class="overflow-hidden relative h-20 flex items-center bg-surface-container-lowest rounded-xl">
+<div class="scrolling-wrapper gap-16 px-8 items-center">
+<img alt="Google" class="h-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAH6hCvU0e9D4fQVZBahFrNlfmmBc0NY-6LbCRs762gSRy9jxbZyf6tJrI7hIK5bgYwb58-58R1RPcXJe0xCxrAaIdY3Zg0MwBnQU_cAhi_aNAp_GR8Qd6SFquhjcrOsvo76XLXfynN5rurlUOMcA31D_Uh8xoMtHX9vbB11-cS4IYc7y8d5W3h69aEcS0JUcNDELy-Xv82PQZkW_GmSJps6sM_Wc2bkfPb7cDPwu2DvUBOugs5U6c96EzH_Mo-_TB3Mp-NmUOSxsix"/>
+<img alt="Microsoft" class="h-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnGibB7vNL3LD4cHUutzOUd20eWCGcJUp8T2ysQBNFFBywl0h6SpfdjT0IMq0kyC-uZRCs8xAtSWXBMSVgU9BMQToNTIVZbWah_n1qmjvPU8W4MrTyBaFqzwDfDUP2wQfFase7DNzCcR4UGaUMz1cu4aQ0tDf0eIgOkSBxjY4Chb0Xw_OUqt830JS5K-6sdfzNILGxgDXxtoAWv3_rjv4gfyslECBdl3_Atam-Vmes1pWQAoFlzOVSmJSMOn-WCMN9-kae7u8t6gP6"/>
+<img alt="Amazon" class="h-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmNTEA6fwSTd2PxB0awtDZqBucS8rtn5N5X2rKp1YyttWwpMsmRmXPSExRkXrT3r4X1kktgVJDORWCoG_Lb8ILpZmE0bwQ83d2951K9XCNEicclUhXZMy3X8X1i-eHAW7olRPwkUPXnR85L6YnyJ1WL-QTEzdn57nvCwj6QLdGTr4J-xwYx3KNjx626AP2W9AolGWW30x_cs26d8IitDfOyTk0ZzeZd3D7tdVtAs4A2SkxoMjzDLpRyWiiMKYtM9NLo2yPfB2OuxD7"/>
+<img alt="Meta" class="h-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_V5ANB6FZGJq4DpVG3JEWcsDhD0XI_Z97PVshNNDjiDYfmm2NzVIjavIitxYzP5gM3W5QaWOF5FVkCGURoIBXvAcUrkuvciCxfpUoRRDJrPpcw7Zhoq4sfDccgqPJHD6gI0pDOs0VUC5JRLtLCkkfS5Wzs-KX1XLcicDcJHWNyEXHMtsHujF1OjL1N6QOVPg6NERRn5WdDXfHRLNQz3N2rXJ74eHVCA5EFwnvt-bt6oYyMPe7iyv5XFlyN1Hq7FSnSclgv1lkad5s"/>
+<img alt="Goldman Sachs" class="h-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOWJY3RK78LS8Ty2sS9AOHxFzxCJtSTlVZJOha9FzBz5R0Wod5agzztX-VBdEb22necmdI5g1dkGo9gzPUxWBLWn-LlerrcHlJmDhpD2dZegZqjBujh_hMiFgefo5w9JZa_bX44KbbmaWla2TqsYniVvxsKLUkXyk0wgqMDwH07uN_octW4tJo8AQypwJZ7vIItMLKNqjslgbFQuqjGttZytLH6gWyL1l_JwEbk4T7u7NljAKmPP0i7wAIXac_IOx7mpDN9A19rUZX"/>
+<img alt="Tower Research" class="h-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiJ8qDPvgBg7xYlKrs0_O66mNStu9B9y3iw2u9MkIQThREf-hckg68qF-U2tSs1aD5DoNmxfO3hrPlCgQgcF7054MPVndXRxfBkDSZqQfG6g5G7Sw20PyeaWwtpGxNfXqGVJgZe3HE6GTVBVqjzMOskR8ip2G60LmvT85OpOFlAE4-qiIOHSu5ShYURyCNt0xagugJvvb8Daj5VYMWRwzrnHhdqoxgnb46NVPEFNcWmBWcAQtIyIsWRJQFCOcSc2ZrZifHEcd4CWVx"/>
+<!-- Duplicate for seamless scroll -->
+<img alt="Google" class="h-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8UuGB7ywK63-3oxP2tk1Ehn0p03giuDtCzI_FXQauIvmRyNdEcMUF8VO644sLYiVbJ-TfDT81nkwDnjEswIXkfwljPCz4X7ig7ID6KG7buJv_BOmgzi_l5sW12QrcVDQOPS-eM5sjhoG9DJEdLM4JOTvFtke-m7-vszpPnsQI2N0yinznS4jxzzRki34p7faJsFYdTHieiOblQUZ3SxHYt9ueh7VbPHrE-daeDLzilXmK1czkUzVHLkRbU9v-3_rJGK7v3itfB9Ql"/>
+<img alt="Microsoft" class="h-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByRDH8jyv4WEx5VRhvX-2tVlvsLH_BSk_K-YYJ41MTqgLBiA2xFQnGvMyL3es3DEIu8rbxQLx_Vyq9Bz9RpasI6AGgVFluoiUGBQff-p8JdDRO3AZeTiHNYgdcW1JdHwne5xebOpDnkqQH7FKK6et6tI-i0x42hT_OuTvpqSdBT7zN6Q81gZKRKYaifgMXp4vGLRPHA-PPKWFPiW49jjCGO_WOxRS4MuSwaQV46yymYfABnU92UusxjUOTwjVhpZBRKPrJ6La21F0B"/>
+<img alt="Amazon" class="h-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXxNy6aJPkxbD_euNdyN-UxREKKFf_WxSE3pkT9ZrOzIiY4RVJLewPXGUWNw99BZbrhvst1pD0NmN94XrWElpz1fTXKoV3GHWhV1L0fbi88Lla89pWfbnUimXFSevc0lOzFU3FNIevQG4OprP9DPVlPns0XB8g-c8z33-TXPskahAIzjDrnF91JfA5BsVtlocmEBrEjlc2VON8xHAdh6mQWdflx8tFxbguxq-7yhBLeqHkm9uD2yCRCxW6NZosQgAcpsP0xm3MLACL"/>
+<img alt="Meta" class="h-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiypaX9zYN_LJ3AHfslVIZ1q_eyZblxlUJoQHrQrYsmj0C7bW7dA37Out2qDsCpDMsl_yseDOop0CPGg2dci4a99GHC9Ut6RRd3iOeMSBVGu42MzMM4thSoHxdSojj2c-lYlvL-mbjc5ptPeKfKYDXHGyuwHjrKtxwKVzo8AM4ueA8mfRftqpNWh8loru2H1dpaK3Mo6qaOLTcD5_El2SnRl4Em-Q674DbWRcU5JlLjqzv7wUKRTuj18esa-ydrixVPT9ye97BNkma"/>
+<img alt="Goldman Sachs" class="h-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjer4TfaVV_ip9_4t2jIKIcr5tDdi-36ap3eAQ1wX5e2TpJViKvLGXJhVYPaE2y_Xte-iQav257hkZ6krd1wNv4vUXZLKL8b_PNkQ6yzTOUbzPu3UToAntNYBnkP8yt0WEx1xMnoNbjhAGvcFbv-wbZT7FVul7ktvjRBBr_8lNfagfDZFkomYgLEIQPM-u1MYxH89pQ1UqJ9Z9wMcsljJJ6COxB2cDYITYjH5pmZkl2ctZbSnG2Zw-8QvzjPfWP4R0LL4xLSt4usIj"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Reviews -->
+<section class="space-y-stack-md" id="reviews">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Verified Reviews</h2>
+<button class="bg-surface-container-high px-4 py-2 rounded-lg font-bold text-primary font-label-md text-label-md hover:bg-surface-container-highest transition-all">Write Review</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-6 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center font-bold text-on-secondary-container">AR</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Aditya R.</p>
+<p class="text-[10px] text-secondary font-bold uppercase tracking-widest">B.Tech CSE, 3rd Year</p>
+</div>
+</div>
+<div class="flex text-tertiary mb-3">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-body-sm text-secondary line-clamp-3">The culture here is unparalleled. Everyone is driven, and the level of research opportunities provided even to undergraduates is incredible. Best campus in India!</p>
+</div>
+<div class="p-6 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center font-bold text-on-tertiary-container">SK</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Sanya K.</p>
+<p class="text-[10px] text-secondary font-bold uppercase tracking-widest">M.Tech Metallurgy, Alumna</p>
+</div>
+</div>
+<div class="flex text-tertiary mb-3">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+</div>
+<p class="text-body-sm text-secondary line-clamp-3">Placement cell is very proactive. The alumni network helped me land a job in Zurich right after my masters. Academic pressure is high but worth it.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Sticky Panel -->
+<aside class="lg:col-span-4">
+<div class="sticky top-28 space-y-gutter">
+<!-- Enrollment Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-2xl p-8 shadow-sm">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="text-secondary text-label-sm font-label-sm uppercase tracking-widest">Academic Year</span>
+<p class="text-headline-md font-headline-md text-on-surface">2024-2025</p>
+</div>
+<div class="bg-error-container text-on-error-container px-3 py-1 rounded-full text-[10px] font-bold uppercase animate-pulse">
+                                Deadline Soon
+                            </div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex items-center justify-between py-2 border-b border-outline-variant">
+<span class="text-secondary font-body-sm">Entrance Test</span>
+<span class="font-bold text-on-surface font-label-md text-label-md">JEE Advanced</span>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-outline-variant">
+<span class="text-secondary font-body-sm">Application Fee</span>
+<span class="font-bold text-on-surface font-label-md text-label-md">₹2,800</span>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-outline-variant">
+<span class="text-secondary font-body-sm">Avg. Tuition/Yr</span>
+<span class="font-bold text-on-surface font-label-md text-label-md">₹2,20,000</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-4 rounded-xl font-bold font-label-md text-label-md shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-1 transition-all">
+                            Check Admission Status
+                        </button>
+<p class="text-center text-[11px] text-secondary mt-4 font-body-sm">Last updated: Oct 12, 2023</p>
+</div>
+<!-- Quick Contact -->
+<div class="bg-surface-container-low border border-outline-variant rounded-2xl p-6">
+<h4 class="font-label-md text-label-md font-bold mb-4">Admissions Office</h4>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">mail</span>
+<span class="text-body-sm">gateoffice@iitb.ac.in</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">call</span>
+<span class="text-body-sm">+91 22 2572 2545</span>
+</div>
+</div>
+<button class="w-full mt-6 text-primary border border-primary/20 bg-white py-2.5 rounded-lg font-bold font-label-md text-label-md hover:bg-primary/5 transition-all">
+                            Talk to Alumni
+                        </button>
+</div>
+<!-- Location Map Placeholder -->
+<div class="rounded-2xl overflow-hidden h-[200px] relative border border-outline-variant">
+<img class="w-full h-full object-cover grayscale brightness-75" data-alt="A stylized minimalist digital map showing the location of Powai in Mumbai with a sleek primary blue marker indicating the IIT Bombay campus. The map is in a light-mode architectural style, using clean lines and a soft color palette that matches the premium corporate aesthetic of the institution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA_iXuSWZCt65gv4RL_Jzrdj8zpcReTDFXOY0FlZH0PPLrrjDivYhl9-sDrvbnQw6hkPXEZ9OOOTMIU-qoUOrvh4OTxP3zf2obmUaRR-epRcRCAQl-CtqOxTB4A1YFV7o5_8lFacMsVX1xBXiX08pR87Khw17-JMVSELQ537nozPqYZEawrlOC22pblLohcYGHVthuNoqf5byPy8cfgnpn1JFToESn-BccY-TG9dRDG16y3fyMvaWKmikDieTyHn-wmah3qCPfXTGw"/>
+<div class="absolute inset-0 bg-primary/10"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-surface-container-lowest px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">directions</span>
+<span class="font-bold text-label-sm">View Location</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant">
+<div class="w-full py-stack-lg px-margin-desktop flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">EduArch</span>
+<p class="font-body-sm text-body-sm text-secondary">© 2024 EduArch. Precise navigation for academic ambition.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-secondary font-medium hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Mission</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Privacy</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Terms</a>
+<a class="text-secondary font-medium hover:text-primary transition-colors font-label-sm text-label-sm" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth scroll for nav links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active state (manual simple toggle)
+                    document.querySelectorAll('nav a').forEach(a => {
+                        a.classList.remove('border-primary', 'text-primary', 'font-bold');
+                        a.classList.add('border-transparent', 'text-secondary');
+                    });
+                    this.classList.remove('border-transparent', 'text-secondary');
+                    this.classList.add('border-primary', 'text-primary', 'font-bold');
+                }
+            });
+        });
+    </script>
+</body></html>
